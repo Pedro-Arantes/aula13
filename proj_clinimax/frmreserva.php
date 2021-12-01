@@ -4,15 +4,16 @@
 
       try {
 
-        $sql = "insert into tblpagamento (modalidade,valor,idpaciente) values (:modalidade,:valor,:idpaciente)";
+        $sql = "insert into tblreserva (idprof,sala,datareserva,horareserva) values (:idprof,:sala,:datareserva,:horareserva)";
 
         $stmt = $con->prepare($sql);
 
       
 
-        $stmt->bindValue(":modalidade",$_POST["modalidade"]);
-        $stmt->bindValue(":valor",$_POST["valor"]);
-        $stmt->bindValue(":idpaciente",$_POST["idpaciente"]);
+        $stmt->bindValue(":idprof",$_POST["idprof"]);
+        $stmt->bindValue(":sala",$_POST["sala"]);
+        $stmt->bindValue(":datareserva",$_POST["datareserva"]);
+        $stmt->bindValue(":horareserva",$_POST["horareserva"]);
         
         $stmt->execute();
         //header('Location:listarclientes.php');
@@ -90,6 +91,46 @@
     </div>
   </div>
 </nav>
+
+  <!--Inicio do formulário-->
+  <div class="container">
+  <!--Enunciado do formulário e da pagina-->
+  <h1>Cadastro de Reserva:</h1>
+  <form method="post">
+    <div class="row" >
+      <div class='row'>
+      <div class="col-auto">
+        <label for="exampleInputEmail1" class="form-label">Id Profissional</label>
+        <input type="text" name="idprof" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+      <div class="col-auto">
+        <label for="cpf" class="form-label" name="sa">Sala</label>
+        <input type="text" name="sala" required class="form-control" id="exampleInputPassword1">
+      </div>
+      </div>
+      <div class="col-auto">
+        <label for="exampleInputEmail1" class="form-label">Data da Reserva</label>
+        <input type="date" name="datareserva" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">email de contato.</div>
+      </div>
+      <div class="col-auto">
+        <label for="exampleInputEmail1" class="form-label">Hora da Reserva</label>
+        <input type="text" name="horareserva" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text"></div>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1"> </label>
+      </div>
+      <div>
+        <button type="submit" class="col-auto btn btn-success">Cadastrar</button>
+        <button type="reset" class="col-auto btn btn-danger">Apagar</button>
+      </div>
+      
+    </div>
+  </form>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
